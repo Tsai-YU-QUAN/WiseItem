@@ -360,15 +360,25 @@ void setup() {
     //Your offsets:	1357	-740	744	61	-79	0     =4
     //Your offsets:	24	-3381	1658	61	-56	24    =5
     //Your offsets:	-3362	-1286	1521	43	25	48    =左胸
+    //Your offsets:	-984	-3150	1772	7	-54	31    =右胸
+
     
 
-
-    mpu.setXAccelOffset(363); // 1688 factory default for my test chip
-    mpu.setYAccelOffset(-789); // 1688 factory default for my test chip
-    mpu.setZAccelOffset(840); // 1688 factory default for my test chip
-    mpu.setXGyroOffset(38);
-    mpu.setYGyroOffset(-15);
-    mpu.setZGyroOffset(39);
+/*
+    mpu.setXAccelOffset(-3362); // 1688 factory default for my test chip
+    mpu.setYAccelOffset(-1286); // 1688 factory default for my test chip
+    mpu.setZAccelOffset(1521); // 1688 factory default for my test chip
+    mpu.setXGyroOffset(43);
+    mpu.setYGyroOffset(25);
+    mpu.setZGyroOffset(48);
+    */
+    
+    mpu.setXAccelOffset(-984); // 1688 factory default for my test chip
+    mpu.setYAccelOffset(-3150); // 1688 factory default for my test chip
+    mpu.setZAccelOffset(1772); // 1688 factory default for my test chip
+    mpu.setXGyroOffset(7);
+    mpu.setYGyroOffset(-54);
+    mpu.setZGyroOffset(31);
 
 
     // make sure it worked (returns 0 if so)
@@ -532,8 +542,8 @@ void loop() {
               connectedandTestingQ = 0;
         
 //              //Serial.println("aaaa\n");
-              byte _bbsa[] = {y16>>8, y16, p16>>8, p16, r16>>8, r16, 0x7e, 0x7d};
-              Serial.write(_bbsa, 8);
+              byte _bbsa[] = {y16>>8, y16, p16>>8, p16, r16>>8, r16};
+              Serial.write(_bbsa, 6);
             }
             connectedandTestingQ++;
             
