@@ -428,7 +428,7 @@ void loop() {
     // if programming failed, don't try to do anything
     if (!dmpReady) return;
 
-    if(Serial.available() > 0)  
+   /* if(Serial.available() > 0)  
     {
       
       while ( Serial.available() ){
@@ -443,9 +443,10 @@ void loop() {
       }
       
     }
+    */
 
     // wait for MPU interrupt or extra packet(s) available
-    while (!mpuInterrupt && fifoCount < packetSize) {
+   /* while (!mpuInterrupt && fifoCount < packetSize) {
         // other program behavior stuff here
         // .
         // .
@@ -457,6 +458,7 @@ void loop() {
         // .
         // .
     }
+    */
 
     // reset interrupt flag and get INT_STATUS byte
     mpuInterrupt = false;
@@ -542,8 +544,8 @@ void loop() {
               connectedandTestingQ = 0;
         
 //              //Serial.println("aaaa\n");
-              byte _bbsa[] = {y16>>8, y16, p16>>8, p16, r16>>8, r16};
-              Serial.write(_bbsa, 6);
+              byte _bbsa[] = {y16>>8, y16, p16>>8, p16, r16>>8, r16, 0x7e, 0x7d};
+              Serial.write(_bbsa, 8);
             }
             connectedandTestingQ++;
             
